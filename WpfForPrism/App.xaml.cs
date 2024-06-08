@@ -1,5 +1,8 @@
-﻿using Prism.DryIoc;
+﻿using ModuleA;
+using ModuleB;
+using Prism.DryIoc;
 using Prism.Ioc;
+using Prism.Modularity;
 using System.Windows;
 using WpfForPrism.Views;
 
@@ -29,8 +32,19 @@ public partial class App : PrismApplication
     {
         //containerRegistry.RegisterForNavigation<UCA>("AAA"); // 這樣註冊的話，就需要在MainWindow.xaml中的Button的Command參數中填入"AAA"
 
-        containerRegistry.RegisterForNavigation<UCA>();
-        containerRegistry.RegisterForNavigation<UCB>();
-        containerRegistry.RegisterForNavigation<UCC>();
+        //containerRegistry.RegisterForNavigation<UCA>();
+        //containerRegistry.RegisterForNavigation<UCB>();
+        //containerRegistry.RegisterForNavigation<UCC>();
+
+
+
+    }
+
+    protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+    {
+        moduleCatalog.AddModule<ModuleAProfile>();
+        moduleCatalog.AddModule<ModuleBProfile>();
+
+        base.ConfigureModuleCatalog(moduleCatalog);
     }
 }
