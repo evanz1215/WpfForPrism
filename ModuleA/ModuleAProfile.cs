@@ -18,7 +18,11 @@ namespace ModuleA
         /// <param name="containerRegistry"></param>
         public void RegisterTypes(IContainerRegistry containerRegistry)
         {
+            // 注入導航
             containerRegistry.RegisterForNavigation<ViewA, ViewAViewModel>();
+
+            // 注入對話框
+            containerRegistry.RegisterDialog<ViewC, ViewCViewModel>();
         }
     }
 }
