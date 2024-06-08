@@ -20,6 +20,6 @@
             <Button Content="模塊C" Width="80" Height="30" Command="{Binding ShowContentCmm }" CommandParameter="UCC"></Button>
         </StackPanel>
 
-        <ContentControl Content="{Binding ShowContent}" Grid.Row="1"></ContentControl>
+        <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"></ContentControl>
     </Grid>
 </Window>

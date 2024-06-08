@@ -1,5 +1,6 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
+using Prism.Regions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,8 +15,12 @@ namespace WpfForPrism.ViewModels
     {
         public DelegateCommand<string> ShowContentCmm { get; set; }
 
-        public MainWindowViewModel()
+        // 區域管理
+        private readonly IRegionManager _regionManager;
+
+        public MainWindowViewModel(IRegionManager regionManager)
         {
+            _regionManager = regionManager;
             ShowContentCmm = new DelegateCommand<string>(ShowContentFunc);
         }
 
@@ -25,18 +30,7 @@ namespace WpfForPrism.ViewModels
         /// <param name="viewName"></param>
         private void ShowContentFunc(string viewName)
         {
-            if (viewName == "UCA")
-            {
-                this.ShowContent = new UCA();
-            }
-            else if (viewName == "UCB")
-            {
-                this.ShowContent = new UCB();
-            }
-            else
-            {
-                this.ShowContent = new UCC();
-            }
+            _regionManager.Regions["ContentRegion"].RequestNavigate(viewName);
         }
 
         /// <summary>

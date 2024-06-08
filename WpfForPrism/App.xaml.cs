@@ -27,5 +27,8 @@ public partial class App : PrismApplication
     /// <exception cref="NotImplementedException"></exception>
     protected override void RegisterTypes(IContainerRegistry containerRegistry)
     {
+        containerRegistry.RegisterForNavigation<UCA>();
+        containerRegistry.RegisterForNavigation<UCB>();
+        containerRegistry.RegisterForNavigation<UCC>();
     }
 }
