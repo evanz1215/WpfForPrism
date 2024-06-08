@@ -3,7 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.34928.147
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfForPrism", "WpfForPrism\WpfForPrism.csproj", "{3D819C1C-43E9-4C43-9D40-0F06B86DC8B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WpfForPrism", "WpfForPrism\WpfForPrism.csproj", "{3D819C1C-43E9-4C43-9D40-0F06B86DC8B5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleA", "ModuleA\ModuleA.csproj", "{5DD44EB4-8142-4988-9A6A-3D8CFFC5850C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ModuleB", "ModuleB\ModuleB.csproj", "{C4933C14-B6FD-4350-999F-92585783CDBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{3D819C1C-43E9-4C43-9D40-0F06B86DC8B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3D819C1C-43E9-4C43-9D40-0F06B86DC8B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3D819C1C-43E9-4C43-9D40-0F06B86DC8B5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5DD44EB4-8142-4988-9A6A-3D8CFFC5850C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5DD44EB4-8142-4988-9A6A-3D8CFFC5850C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5DD44EB4-8142-4988-9A6A-3D8CFFC5850C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5DD44EB4-8142-4988-9A6A-3D8CFFC5850C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4933C14-B6FD-4350-999F-92585783CDBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4933C14-B6FD-4350-999F-92585783CDBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4933C14-B6FD-4350-999F-92585783CDBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4933C14-B6FD-4350-999F-92585783CDBD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
