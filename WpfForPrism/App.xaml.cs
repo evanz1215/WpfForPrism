@@ -1,5 +1,5 @@
-﻿using ModuleA;
-using ModuleB;
+﻿//using ModuleA;
+//using ModuleB;
 using Prism.DryIoc;
 using Prism.Ioc;
 using Prism.Modularity;
@@ -35,16 +35,22 @@ public partial class App : PrismApplication
         //containerRegistry.RegisterForNavigation<UCA>();
         //containerRegistry.RegisterForNavigation<UCB>();
         //containerRegistry.RegisterForNavigation<UCC>();
-
-
-
     }
 
-    protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
-    {
-        moduleCatalog.AddModule<ModuleAProfile>();
-        moduleCatalog.AddModule<ModuleBProfile>();
+    /// <summary>
+    /// 方法一使用專案引入
+    /// </summary>
+    /// <param name="moduleCatalog"></param>
+    //protected override void ConfigureModuleCatalog(IModuleCatalog moduleCatalog)
+    //{
+    //    moduleCatalog.AddModule<ModuleAProfile>();
+    //    moduleCatalog.AddModule<ModuleBProfile>();
 
-        base.ConfigureModuleCatalog(moduleCatalog);
+    //    base.ConfigureModuleCatalog(moduleCatalog);
+    //}
+
+    protected override IModuleCatalog CreateModuleCatalog()
+    {
+        return new DirectoryModuleCatalog() { ModulePath = @".\Modules" };
     }
 }
