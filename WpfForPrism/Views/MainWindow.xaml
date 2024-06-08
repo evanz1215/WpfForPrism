@@ -17,7 +17,7 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0">
             <Button Content="模塊A" Width="80" Height="30" Command="{Binding ShowContentCmm }" CommandParameter="ViewA"></Button>
             <Button Content="模塊B" Width="80" Height="30" Command="{Binding ShowContentCmm }" CommandParameter="ViewB"></Button>
-            <!--<Button Content="區域C" Width="80" Height="30" Command="{Binding ShowContentCmm }" CommandParameter="UCC"></Button>-->
+            <Button Content="後退" Width="80" Height="30" Command="{Binding BackCmm }"></Button>
         </StackPanel>
 
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"></ContentControl>

@@ -5,10 +5,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace ModuleA.ViewModels
 {
-    public class ViewAViewModel : BindableBase, INavigationAware
+    public class ViewAViewModel : BindableBase, IConfirmNavigationRequest // INavigationAware
     {
         /// <summary>
         /// 綁定的內容
@@ -29,6 +30,23 @@ namespace ModuleA.ViewModels
         }
 
         /// <summary>
+        /// 離開頁面時確認
+        /// </summary>
+        /// <param name="navigationContext"></param>
+        /// <param name="continuationCallback"></param>
+        /// <exception cref="NotImplementedException"></exception>
+        public void ConfirmNavigationRequest(NavigationContext navigationContext, Action<bool> continuationCallback)
+        {
+            bool result = true;
+            if (MessageBox.Show("確認切換嗎?", "溫馨提示", MessageBoxButton.YesNo) == MessageBoxResult.No)
+            {
+                result = false;
+            }
+
+            continuationCallback(result);
+        }
+
+        /// <summary>
         /// 是否重用實例
         /// </summary>
         /// <param name="navigationContext"></param>
@@ -39,12 +57,9 @@ namespace ModuleA.ViewModels
             return true;
         }
 
-
         public void OnNavigatedFrom(NavigationContext navigationContext)
         {
-
         }
-
 
         public void OnNavigatedTo(NavigationContext navigationContext)
         {
@@ -52,7 +67,6 @@ namespace ModuleA.ViewModels
             {
                 Msg = navigationContext.Parameters.GetValue<string>("MsgA");
             }
-
         }
     }
 }

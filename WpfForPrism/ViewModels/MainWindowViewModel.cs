@@ -1,13 +1,7 @@
 ﻿using Prism.Commands;
 using Prism.Mvvm;
 using Prism.Regions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Controls;
-using WpfForPrism.Views;
 
 namespace WpfForPrism.ViewModels
 {
@@ -15,13 +9,33 @@ namespace WpfForPrism.ViewModels
     {
         public DelegateCommand<string> ShowContentCmm { get; set; }
 
+        /// <summary>
+        /// 後退
+        /// </summary>
+        public DelegateCommand BackCmm { get; set; }
+
         // 區域管理
         private readonly IRegionManager _regionManager;
 
-        public MainWindowViewModel(IRegionManager regionManager)
+        /// <summary>
+        /// 導航紀錄
+        /// </summary>
+        private IRegionNavigationJournal _journal;
+
+        public MainWindowViewModel(IRegionManager regionManager, IRegionNavigationJournal journal)
         {
             _regionManager = regionManager;
             ShowContentCmm = new DelegateCommand<string>(ShowContentFunc);
+            BackCmm = new DelegateCommand(Back);
+            _journal = journal;
+        }
+
+        private void Back()
+        {
+            if (_journal != null && _journal.CanGoBack)
+            {
+                _journal.GoBack();
+            }
         }
 
         /// <summary>
@@ -33,7 +47,10 @@ namespace WpfForPrism.ViewModels
             NavigationParameters parameters = new NavigationParameters();
             parameters.Add("MsgA", "大家好，我是A");
 
-            _regionManager.Regions["ContentRegion"].RequestNavigate(viewName, parameters);
+            _regionManager.Regions["ContentRegion"].RequestNavigate(viewName, callback =>
+            {
+                _journal = callback.Context.NavigationService.Journal;
+            }, parameters);
         }
 
         /// <summary>
@@ -53,7 +70,5 @@ namespace WpfForPrism.ViewModels
                 RaisePropertyChanged();
             }
         }
-
-
     }
 }
