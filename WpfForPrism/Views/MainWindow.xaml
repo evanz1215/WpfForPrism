@@ -19,6 +19,10 @@
             <Button Content="模塊B" Width="80" Height="30" Command="{Binding ShowContentCmm }" CommandParameter="ViewB"></Button>
             <Button Content="後退" Width="80" Height="30" Command="{Binding BackCmm }"></Button>
             <Button Content="打開對話框" Width="80" Height="30" Command="{Binding DialogCmm }" CommandParameter="ViewC"></Button>
+
+            <Button Content="發佈" Width="80" Height="30" Click="BtnPubClick"></Button>
+            <Button Content="訂閱" Width="80" Height="30" Click="BtnSubClick"></Button>
+            <Button Content="取消訂閱" Width="80" Height="30" Click="BtnCancelSubClick"></Button>
         </StackPanel>
 
         <ContentControl Grid.Row="1" prism:RegionManager.RegionName="ContentRegion"></ContentControl>

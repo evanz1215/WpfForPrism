@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Prism.Events;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -19,9 +20,46 @@ namespace WpfForPrism.Views
     /// </summary>
     public partial class MainWindow : Window
     {
-        public MainWindow()
+        private readonly IEventAggregator _eventAggregator;
+
+        public MainWindow(IEventAggregator eventAggregator)
         {
             InitializeComponent();
+            _eventAggregator = eventAggregator;
+        }
+
+        /// <summary>
+        /// 發佈
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnPubClick(object sender, RoutedEventArgs e)
+        {
+            _eventAggregator.GetEvent<MsgEvent>().Publish("Hello World!");
+        }
+
+        /// <summary>
+        /// 訂閱
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void BtnSubClick(object sender, RoutedEventArgs e)
+        {
+            _eventAggregator.GetEvent<MsgEvent>().Subscribe(Sub);
+        }
+
+        /// <summary>
+        /// 訂閱
+        /// </summary>
+        /// <param name="msg"></param>
+        private void Sub(string msg)
+        {
+            MessageBox.Show($"我收到訂閱的訊息:{msg}");
+        }
+
+        private void BtnCancelSubClick(object sender, RoutedEventArgs e)
+        {
+            _eventAggregator.GetEvent<MsgEvent>().Unsubscribe(Sub);
         }
     }
 }
