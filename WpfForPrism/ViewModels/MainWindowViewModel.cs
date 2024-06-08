@@ -30,7 +30,10 @@ namespace WpfForPrism.ViewModels
         /// <param name="viewName"></param>
         private void ShowContentFunc(string viewName)
         {
-            _regionManager.Regions["ContentRegion"].RequestNavigate(viewName);
+            NavigationParameters parameters = new NavigationParameters();
+            parameters.Add("MsgA", "大家好，我是A");
+
+            _regionManager.Regions["ContentRegion"].RequestNavigate(viewName, parameters);
         }
 
         /// <summary>
